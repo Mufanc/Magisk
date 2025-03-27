@@ -444,13 +444,13 @@ static rust::Vec<ModuleInfo> collect_modules(bool zygisk_enabled, bool open_zygi
 #endif
                 unlinkat(modfd, "zygisk/unloaded", 0);
             }
-        } else {
+        } /* else {
             // Ignore zygisk modules when zygisk is not enabled
             if (faccessat(modfd, "zygisk", F_OK, 0) == 0) {
                 LOGI("%s: ignore\n", entry->d_name);
                 return;
             }
-        }
+        } */
         info.name = entry->d_name;
         modules.push_back(std::move(info));
     });
